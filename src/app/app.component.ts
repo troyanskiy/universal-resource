@@ -16,13 +16,20 @@ import { TestResource } from '../resource/test.resource';
 export class AppComponent {
 
   data: any;
+  data2: any;
 
   constructor(private testRes: TestResource) {
     this.init();
   }
 
   async init() {
-    this.data = await this.testRes.test();
+    // this.data = await this.testRes.test();
+
+    try {
+        this.data2 = await this.testRes.sendData({'test': 'string'});
+    } catch (err) {
+        console.error(err);
+    }
   }
 
 
